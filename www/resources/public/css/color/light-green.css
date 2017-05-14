@@ -9070,16 +9070,13 @@ ul {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-.footer-area .footer-area-bottom .payment-method {
+.footer-area .footer-area-bottom .author {
   text-align: right;
 }
 @media only screen and (max-width: 767px) {
-  .footer-area .footer-area-bottom .payment-method {
+  .footer-area .footer-area-bottom .author {
     text-align: center;
   }
-}
-.footer-area .footer-area-bottom .payment-method li {
-  display: inline-block;
 }
 /*======================================
 28. Modal Dialog Area styles 
