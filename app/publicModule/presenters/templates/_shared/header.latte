@@ -210,58 +210,77 @@
 						<div class="col-md-12">
 							<div class="mobile-menu">
 								<nav id="dropdown">
+
 									<ul>
-										<li class="active"><a href="index.html#">Home</a>
-											<ul>
-												<li><a href="index.html">Home 1</a></li>
-												<li><a href="index2.html">Home 2</a></li>
-												<li><a href="index3.html">Home 3</a></li>
-												<li><a href="index4.html">Home 4</a></li>
-											</ul>
+										<li n:class="$presenter->isLinkCurrent('Homepage:default') ? active">
+											<a n:href="Homepage:default">Domů</a>
 										</li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="index.html#">Blog</a>
-											<ul>
-												<li><a href="blog.html">Blog</a></li>
-												<li><a href="single-blog.html">Single Blog</a></li>
-												<li class="has-child-menu"><a href="index.html#">Demo</a>
-													<ul class="thired-level">
-														<li><a href="index.html#">Demo 1</a></li>
-														<li><a href="index.html#">Demo 2</a></li>
-													</ul>
-												</li>
-											</ul>
+										<li n:class="$presenter->isLinkCurrent('Article:default', 'zakazkova-vyroba') ? active">
+											<a n:href="Article:default, zakazkova-vyroba">Zakázková výroba</a>
 										</li>
-										<li><a href="index.html#">Portfolio</a>
-											<ul>
-												<li><a href="portfolio1.html">Portfolio 1</a></li>
-												<li><a href="portfolio2.html">Portfolio 2</a></li>
-											</ul>
+										<li n:class="$presenter->isLinkCurrent('Article:default','informace') ? active">
+											<a n:href="Article:default, informace">Informace</a>
 										</li>
-										<li><a href="index.html#">Shop</a>
-											<ul>
-												<li><a href="shop1.html">Shop 1</a></li>
-												<li><a href="shop2.html">Shop 2</a></li>
-												<li><a href="shop3.html">Shop 3</a></li>
-												<li><a href="shop4.html">Shop 4</a></li>
-												<li><a href="shop5.html">Shop 5</a></li>
-												<li><a href="shop6.html">Shop 6</a></li>
-												<li><a href="shop7.html">Shop 7</a></li>
-												<li><a href="product-details1.html">Shop Details 1</a></li>
-												<li><a href="product-details2.html">Shop Details 2</a></li>
-											</ul>
+										<li n:class="$presenter->isLinkCurrent('Article:default','obchodni-podminky') ? active">
+											<a n:href="Article:default, obchodni-podminky">Obchodní podmínky</a>
 										</li>
-										<li><a href="index.html#">Pages</a>
-											<ul>
-												<li><a href="login-registration.html">Login Registration</a></li>
-												<li><a href="cart.html">Cart</a></li>
-												<li><a href="wishlist.html">Wishlist</a></li>
-												<li><a href="check-out.html">Check Out</a></li>
-												<li><a href="404.html">404</a></li>
-											</ul>
+										<li n:class="$presenter->isLinkCurrent('Contact:default') ? active">
+											<a n:href="Contact:default">Kontakt</a>
 										</li>
-										<li><a href="contact.html">Contact</a></li>
 									</ul>
+
+									{*<ul>*}
+										{*<li class="active"><a href="index.html#">Home</a>*}
+											{*<ul>*}
+												{*<li><a href="index.html">Home 1</a></li>*}
+												{*<li><a href="index2.html">Home 2</a></li>*}
+												{*<li><a href="index3.html">Home 3</a></li>*}
+												{*<li><a href="index4.html">Home 4</a></li>*}
+											{*</ul>*}
+										{*</li>*}
+										{*<li><a href="about.html">About</a></li>*}
+										{*<li><a href="index.html#">Blog</a>*}
+											{*<ul>*}
+												{*<li><a href="blog.html">Blog</a></li>*}
+												{*<li><a href="single-blog.html">Single Blog</a></li>*}
+												{*<li class="has-child-menu"><a href="index.html#">Demo</a>*}
+													{*<ul class="thired-level">*}
+														{*<li><a href="index.html#">Demo 1</a></li>*}
+														{*<li><a href="index.html#">Demo 2</a></li>*}
+													{*</ul>*}
+												{*</li>*}
+											{*</ul>*}
+										{*</li>*}
+										{*<li><a href="index.html#">Portfolio</a>*}
+											{*<ul>*}
+												{*<li><a href="portfolio1.html">Portfolio 1</a></li>*}
+												{*<li><a href="portfolio2.html">Portfolio 2</a></li>*}
+											{*</ul>*}
+										{*</li>*}
+										{*<li><a href="index.html#">Shop</a>*}
+											{*<ul>*}
+												{*<li><a href="shop1.html">Shop 1</a></li>*}
+												{*<li><a href="shop2.html">Shop 2</a></li>*}
+												{*<li><a href="shop3.html">Shop 3</a></li>*}
+												{*<li><a href="shop4.html">Shop 4</a></li>*}
+												{*<li><a href="shop5.html">Shop 5</a></li>*}
+												{*<li><a href="shop6.html">Shop 6</a></li>*}
+												{*<li><a href="shop7.html">Shop 7</a></li>*}
+												{*<li><a href="product-details1.html">Shop Details 1</a></li>*}
+												{*<li><a href="product-details2.html">Shop Details 2</a></li>*}
+											{*</ul>*}
+										{*</li>*}
+										{*<li><a href="index.html#">Pages</a>*}
+											{*<ul>*}
+												{*<li><a href="login-registration.html">Login Registration</a></li>*}
+												{*<li><a href="cart.html">Cart</a></li>*}
+												{*<li><a href="wishlist.html">Wishlist</a></li>*}
+												{*<li><a href="check-out.html">Check Out</a></li>*}
+												{*<li><a href="404.html">404</a></li>*}
+											{*</ul>*}
+										{*</li>*}
+										{*<li><a href="contact.html">Contact</a></li>*}
+									{*</ul>*}
 								</nav>
 							</div>
 						</div>
