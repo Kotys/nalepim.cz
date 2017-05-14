@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{$basePath}/resources/public/img/favicon.png">
+
+	<!-- Normalize CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/normalize.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/main.css">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/bootstrap.min.css">
+
+	<!-- Animate CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/animate.min.css">
+
+	<!-- Font-awesome CSS-->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/font-awesome.min.css">
+
+	<!-- Flaticon CSS-->
+	<link rel="stylesheet" type="text/css" href="{$basePath}/resources/public/css/font/flaticon.css">
+
+	<!-- Owl Caousel CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/owl.theme.default.min.css">
+
+	<!-- Main Menu CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/meanmenu.min.css">
+
+	<!-- Nivo Slider CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/lib/custom-slider/css/nivo-slider.css" type="text/css"/>
+	<link rel="stylesheet" href="{$basePath}/resources/public/lib/custom-slider/css/preview.css" type="text/css" media="screen"/>
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/select2.min.css">
+
+	<!-- Custom CSS - deprecated -->
+	<!--<link rel="stylesheet" href="style.css"> -->
+
+	<link rel="stylesheet" href="{$basePath}/resources/public/css/color/light-green.css">
+
+	<!-- Modernizr Js -->
+	<script src="{$basePath}/resources/public/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="wrapper-area">
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	
+	<!-- Header Area Start Here -->
+	{include '_shared/header.latte'}
+	<!-- Header Area End Here -->
+
+	{include content}
+
+	<!-- Footer Area Start Here -->
+	{include '_shared/footer.latte'}
+	<!-- Footer Area End Here -->
+</div>
+
+<div id="preloader"></div>
+
+<!-- jquery-->
+<script src="{$basePath}/resources/public/js/vendor/jquery-2.2.4.min.js" type="text/javascript"></script>
+
+<!-- Bootstrap js -->
+<script src="{$basePath}/resources/public/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- Owl Cauosel JS -->
+<script src="{$basePath}/resources/public/js/owl.carousel.min.js" type="text/javascript"></script>
+
+<!-- Nivo slider js -->
+<script src="{$basePath}/resources/public/lib/custom-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="{$basePath}/resources/public/lib/custom-slider/home.js" type="text/javascript"></script>
+
+<!-- Meanmenu Js -->
+<script src="{$basePath}/resources/public/js/jquery.meanmenu.min.js" type="text/javascript"></script>
+
+<!-- WOW JS -->
+<script src="{$basePath}/resources/public/js/wow.min.js" type="text/javascript"></script>
+
+<!-- Plugins js -->
+<script src="{$basePath}/resources/public/js/plugins.js" type="text/javascript"></script>
+
+<!-- Countdown js -->
+<script src="{$basePath}/resources/public/js/jquery.countdown.min.js" type="text/javascript"></script>
+
+<!-- Srollup js -->
+<script src="{$basePath}/resources/public/js/jquery.scrollUp.min.js" type="text/javascript"></script>
+
+<!-- Isotope js -->
+<script src="{$basePath}/resources/public/js/isotope.pkgd.min.js" type="text/javascript"></script>
+
+
+<!-- Custom Js -->
+<script src="{$basePath}/resources/public/js/main.js" type="text/javascript"></script>
+
+{block scripts}
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+{/block}
+</body>
+</html>
