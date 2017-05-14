@@ -97,91 +97,11 @@
 							<ul class="header-cart-area">
 								<li>
 									<div class="cart-area">
-										<a n:href="Cart:default"><i class="fa fa-shopping-cart"
-																 aria-hidden="true"></i><span>2</span></a>
-										{*<ul>*}
-											{*<li>*}
-												{*<div class="cart-single-product">*}
-													{*<div class="media">*}
-														{*<div class="pull-left cart-product-img">*}
-															{*<a href="index.html#">*}
-																{*<img class="img-responsive" alt="product"*}
-																	 {*src="{$basePath}/resources/public/img/best-seller/4.jpg">*}
-															{*</a>*}
-														{*</div>*}
-														{*<div class="media-body cart-content">*}
-															{*<ul>*}
-																{*<li>*}
-																	{*<h1><a href="index.html#">Product Title Here</a>*}
-																	{*</h1>*}
-																	{*<h2><span>Code:</span> STPT600</h2>*}
-																{*</li>*}
-																{*<li>*}
-																	{*<p>X 1</p>*}
-																{*</li>*}
-																{*<li>*}
-																	{*<p>$49</p>*}
-																{*</li>*}
-																{*<li>*}
-																	{*<a class="trash" href="index.html#"><i*}
-																				{*class="fa fa-trash-o"></i></a>*}
-																{*</li>*}
-															{*</ul>*}
-														{*</div>*}
-													{*</div>*}
-												{*</div>*}
-											{*</li>*}
-											{*<li>*}
-												{*<div class="cart-single-product">*}
-													{*<div class="media">*}
-														{*<div class="pull-left cart-product-img">*}
-															{*<a href="index.html#">*}
-																{*<img class="img-responsive" alt="product"*}
-																	 {*src="{$basePath}/resources/public/img/best-seller/5.jpg">*}
-															{*</a>*}
-														{*</div>*}
-														{*<div class="media-body cart-content">*}
-															{*<ul>*}
-																{*<li>*}
-																	{*<h1><a href="index.html#">Product Title Here</a>*}
-																	{*</h1>*}
-																	{*<h2><span>Code:</span> STPT460</h2>*}
-																{*</li>*}
-																{*<li>*}
-																	{*<p>X 1</p>*}
-																{*</li>*}
-																{*<li>*}
-																	{*<p>$75</p>*}
-																{*</li>*}
-																{*<li>*}
-																	{*<a class="trash" href="index.html#"><i*}
-																				{*class="fa fa-trash-o"></i></a>*}
-																{*</li>*}
-															{*</ul>*}
-														{*</div>*}
-													{*</div>*}
-												{*</div>*}
-											{*</li>*}
-											{*<li>*}
-												{*<span><span>Sub Total</span></span><span>$124</span>*}
-												{*<span><span>Discount</span></span><span>$30</span>*}
-												{*<span><span>Vat(20%)</span></span><span>$18.8</span>*}
-												{*<span><span>Sub Total</span></span><span>$112.8</span>*}
-											{*</li>*}
-											{*<li>*}
-												{*<ul class="checkout">*}
-													{*<li><a href="cart.html" class="btn-checkout"><i*}
-																	{*class="fa fa-shopping-cart"*}
-																	{*aria-hidden="true"></i>View Cart</a></li>*}
-													{*<li><a href="check-out.html" class="btn-checkout"><i*}
-																	{*class="fa fa-share" aria-hidden="true"></i>Checkout</a>*}
-													{*</li>*}
-												{*</ul>*}
-											{*</li>*}
-										{*</ul>*}
+										<a n:href="Cart:default">
+											<i class="fa fa-shopping-cart" aria-hidden="true"></i><span>2</span>
+										</a>
 									</div>
 								</li>
-								
 							</ul>
 						</div>
 					</div>
@@ -226,8 +146,11 @@
 									<li n:class="$presenter->isLinkCurrent('Article:default', 'zakazkova-vyroba') ? active">
 										<a n:href="Article:default, zakazkova-vyroba">Zakázková výroba</a>
 									</li>
-									<li n:class="$presenter->isLinkCurrent('Article:default','faq') ? active">
-										<a n:href="Article:default, faq">FAQ</a>
+									<li n:class="$presenter->isLinkCurrent('Article:default','informace') ? active">
+										<a n:href="Article:default, informace">Informace</a>
+									</li>
+									<li n:class="$presenter->isLinkCurrent('Article:default','obchodni-podminky') ? active">
+										<a n:href="Article:default, obchodni-podminky">Obchodní podmínky</a>
 									</li>
 									<li n:class="$presenter->isLinkCurrent('Contact:default') ? active">
 										<a n:href="Contact:default">Kontakt</a>
