@@ -1010,7 +1010,6 @@ ul {
 }
 .account-wishlist ul li {
   display: inline-block;
-  text-transform: capitalize;
   font-weight: 500;
   letter-spacing: 2px;
 }
