@@ -230,7 +230,7 @@
      -------------------------------------*/
     $(window).on('load', function () {
         // Page Preloader
-        $('#preloader').fadeOut('slow', function () {
+        $('.sk-cube-grid, #preloader').fadeOut('slow', function () {
             $(this).remove();
         });
 
