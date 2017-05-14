@@ -108,41 +108,6 @@
         $(this).html(e.strftime("<div class='countdown-section'><h3>%-d</h3> <p>day%!d</p> </div><div class='countdown-section'><h3>%H</h3> <p>Hour%!H</p> </div><div class='countdown-section'><h3>%M</h3> <p>Min%!M</p> </div><div class='countdown-section'><h3>%S</h3> <p>Sec%!S</p> </div>"));
     });
 
-    /*-------------------------------------
-     Contact Form activation code
-     -------------------------------------*/
-    if ($('#contact-form').length) {
-        $('#contact-form').validator().on('submit', function (e) {
-            var $this = $(this),
-                $target = $('.form-response');
-            if (e.isDefaultPrevented()) {
-                $target.html("<div class='alert alert-success'><p>Please select all required field.</p></div>");
-            } else {
-                var name = $('#form-name').val();
-                var email = $('#form-email').val();
-                var message = $('#form-message').val();
-                // ajax call
-                $.ajax({
-                    url: "php/form-process.php",
-                    type: "POST",
-                    data: "name=" + name + "&email=" + email + "&message=" + message,
-                    beforeSend: function () {
-                        $target.html("<div class='alert alert-info'><p>Loading ...</p></div>");
-                    },
-                    success: function (text) {
-                        if (text == 'success') {
-                            $this[0].reset();
-                            $target.html("<div class='alert alert-success'><p>Message has been sent successfully.</p></div>");
-                        } else {
-                            $target.html("<div class='alert alert-success'><p>" + text + "</p></div>");
-                        }
-                    }
-                });
-                return false;
-            }
-        });
-    }
-
 
     /*-------------------------------------
      Input Quantity Up & Down activation code
@@ -339,26 +304,5 @@
             }
         }
     });// end of scrool function
-
-    /*-------------------------------------
-     Google Map activation code
-     -------------------------------------*/
-    if ($('#googleMap').length) {
-        var initialize = function () {
-            var mapOptions = {
-                zoom: 15,
-                scrollwheel: false,
-                center: new google.maps.LatLng(-37.81618, 144.95692)
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
-            var marker = new google.maps.Marker({
-                position: map.getCenter(),
-                animation: google.maps.Animation.BOUNCE,
-                icon: 'img/map-marker.png',
-                map: map
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    }
 
 })(jQuery);

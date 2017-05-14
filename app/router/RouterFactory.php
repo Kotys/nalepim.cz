@@ -20,6 +20,8 @@ class RouterFactory
 		$adminRouter[] = new Route('/admin/<presenter>/<action>[/<id>]', 'Homepage:default');
 
 		$publicRouter = new RouteList('Public');
+		$publicRouter[] = new Route('product/<id>', 'Product:default');
+		$publicRouter[] = new Route('article/<id>', 'Article:default');
 		$publicRouter[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 
 		$router = new RouteList();

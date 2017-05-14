@@ -220,25 +220,17 @@
 						<div class="main-menu-area">
 							<nav>
 								<ul>
-									{*<li class="active"><a href="index.html#">Home</a>*}
-										{*<ul>*}
-											{*<li><a class="active" href="index.html">Home 1</a></li>*}
-											{*<li><a href="index2.html">Home 2</a></li>*}
-											{*<li><a href="index3.html">Home 3</a></li>*}
-											{*<li><a href="index4.html">Home 4</a></li>*}
-										{*</ul>*}
-									{*</li>*}
-									<li class="active">
+									<li n:class="$presenter->isLinkCurrent('Homepage:default') ? active">
 										<a n:href="Homepage:default">Domů</a>
 									</li>
-									<li>
-										<a n:href="Homepage:default">Zakázková výroba</a>
+									<li n:class="$presenter->isLinkCurrent('Article:default', 'zakazkova-vyroba') ? active">
+										<a n:href="Article:default, zakazkova-vyroba">Zakázková výroba</a>
 									</li>
-									<li>
-										<a n:href="Homepage:default">FAQ</a>
+									<li n:class="$presenter->isLinkCurrent('Article:default','faq') ? active">
+										<a n:href="Article:default, faq">FAQ</a>
 									</li>
-									<li>
-										<a n:href="Homepage:default">Kontakt</a>
+									<li n:class="$presenter->isLinkCurrent('Contact:default') ? active">
+										<a n:href="Contact:default">Kontakt</a>
 									</li>
 
 
