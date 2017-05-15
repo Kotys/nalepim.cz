@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<meta charset="utf-8">
@@ -19,9 +20,6 @@
 	<!-- Custom CSS -->
 	<link href="{$basePath}/resources/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
-	<!-- Morris Charts CSS -->
-	<link href="{$basePath}/resources/admin/vendor/morrisjs/morris.css" rel="stylesheet">
-
 	<!-- Custom Fonts -->
 	<link href="{$basePath}/resources/admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet"
 		  type="text/css">
@@ -37,13 +35,7 @@
 
 <body>
 
-<div id="wrapper">
-	{include './_shared/menu.latte'}
-
-	<div id="page-wrapper">
-		{include content}
-	</div>
-</div>
+{include content}
 
 <!-- jQuery -->
 <script src="{$basePath}/resources/admin/vendor/jquery/jquery.min.js"></script>

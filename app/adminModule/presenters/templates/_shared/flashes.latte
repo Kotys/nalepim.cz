@@ -1,0 +1,18 @@
+{foreach $flashes as $flash}
+	<div class="alert alert-success alert-dismissable" n:if="$flash->type == 'success'">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		{$flash->message}
+	</div>
+	<div class="alert alert-info alert-dismissable" n:if="$flash->type == 'info'">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		{$flash->message}
+	</div>
+	<div class="alert alert-warning alert-dismissable" n:if="$flash->type == 'warning'">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		{$flash->message}
+	</div>
+	<div class="alert alert-danger alert-dismissable" n:if="$flash->type == 'danger'">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		{$flash->message}
+	</div>
+{/foreach}

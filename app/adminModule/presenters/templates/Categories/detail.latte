@@ -1,0 +1,35 @@
+{block content}
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header" n:block="title">Kategorie - Detail</h1>
+	</div>
+</div>
+
+{include '../_shared/flashes.latte'}
+
+<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="form-group">
+						<label for="category-title">Název kategorie</label>
+						<input class="form-control" id="category-title" value="kategorie 1">
+						{*<p class="help-block">Example block-level help text here.</p>*}
+					</div>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li>Subkategorie 1</li>
+						<li>Subkategorie 2</li>
+						<li>Subkategorie 3</li>
+						<li>Subkategorie 4</li>
+						<li>Subkategorie 5</li>
+						<li>Subkategorie 6</li>
+					</ul>
+				</div>
+				<div class="panel-footer text-right">
+					<a n:href="Categories:detail" class="btn btn-info btn-md">Zobrazit detail</a>
+				</div>
+			</div>
+		</div>
+</div>
