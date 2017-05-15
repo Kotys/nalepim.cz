@@ -444,3 +444,15 @@ table.dataTable thead .sorting:after {
 .categories-list td {
   padding: 5px 8px !important;
 }
+.categories-list td i.fa {
+  margin-right: 6px;
+}
+.categories-list td .delete-action {
+  opacity: 0.35;
+}
+.categories-list td .delete-action:hover {
+  opacity: 1 !important;
+}
+.categories-list tr:hover .delete-action {
+  opacity: 0.8;
+}

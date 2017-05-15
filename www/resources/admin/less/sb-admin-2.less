@@ -564,5 +564,18 @@ table.dataTable thead .sorting:after {
 .categories-list {
 	td {
 		padding: 5px 8px !important;
+		i.fa {
+			margin-right: 6px;
+		}
+
+		.delete-action {
+			opacity: 0.35;
+			&:hover {
+				opacity: 1 !important;
+			}
+		}
+	}
+	tr:hover .delete-action {
+		opacity: 0.8;
 	}
 }
