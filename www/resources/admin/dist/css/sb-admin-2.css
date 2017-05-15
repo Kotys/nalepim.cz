@@ -432,7 +432,7 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
-.orders-panel button {
+.orders-panel a.btn {
   margin-right: 8px;
   margin-bottom: 8px;
 }

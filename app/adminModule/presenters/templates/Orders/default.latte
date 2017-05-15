@@ -12,23 +12,33 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-8 col-lg-4">
 				<div class="form-group">
-					<label for="search">Vyhledávání</label>
-					<div class="input-group">
-						<input type="text" class="form-control" id="search" placeholder="Zadejté kód objednávky">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+					<form n:name="searchForm">
+						<label for="search">Vyhledávání</label>
+						<div class="input-group">
+							<input n:name="searchTerm" type="text" class="form-control" id="search" placeholder="Zadejté kód objednávky">
+							<span class="input-group-btn">
+							<button class="btn btn-default" type="submit" n:name="find"><i class="fa fa-search"></i></button>
 						</span>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="col-xs-12 col-lg-8">
 				<div class="form-group">
 					<label>Filtr dle stavu</label>
 					<div class="input-group">
-						<button type="button" class="btn btn-info">Čeká na zaplacení</button>
-						<button type="button" class="btn btn-info">Čeká na expedici</button>
-						<button type="button" class="btn btn-default">Dokončeno</button>
-						<button type="button" class="btn btn-default">Stornováno</button>
+						<a n:href="ChangeFilterValue!, awaitingPayment" n:class='isset($awaitingPayment) && $awaitingPayment === true ? "btn btn-info" : "btn btn-default"'>
+							Čeká na zaplacení
+						</a>
+						<a n:href="ChangeFilterValue!, awaitingExpedition" n:class='isset($awaitingExpedition) && $awaitingExpedition === true ? "btn btn-info" : "btn btn-default"'>
+							Čeká na expedici
+						</a>
+						<a n:href="ChangeFilterValue!, resolved" n:class='isset($resolved) && $resolved === true ? "btn btn-info" : "btn btn-default"'>
+							Dokončeno
+						</a>
+						<a n:href="ChangeFilterValue!, canceledTest" n:class='isset($canceledTest) && $canceledTest === true ? "btn btn-info" : "btn btn-default"'>
+							Stornováno
+						</a>
 					</div>
 				</div>
 			</div>
