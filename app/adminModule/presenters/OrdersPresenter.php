@@ -15,26 +15,31 @@ use Nette\Application\UI\Form;
 class OrdersPresenter extends SecuredAdminPresenter
 {
 	/**
+	 * @var bool
 	 * @persistent
 	 */
 	public $awaitingPayment = true;
 
 	/**
+	 * @var bool
 	 * @persistent
 	 */
 	public $awaitingExpedition = true;
 
 	/**
+	 * @var bool
 	 * @persistent
 	 */
 	public $resolved = false;
 
 	/**
+	 * @var bool
 	 * @persistent
 	 */
 	public $canceledTest = false;
 
 	/**
+	 * @var string
 	 * @persistent
 	 */
 	public $searchTerm;
@@ -51,9 +56,9 @@ class OrdersPresenter extends SecuredAdminPresenter
 	}
 
 	/**
-	 * @param $filterKey
+	 * @param $filterKey string
 	 */
-	public function handleChangeFilterValue($filterKey)
+	public function handleChangeFilterValue(string $filterKey): void
 	{
 		if(isset($this->$filterKey)) {
 			$this->$filterKey = !$this->$filterKey;
@@ -65,7 +70,7 @@ class OrdersPresenter extends SecuredAdminPresenter
 	/**
 	 * @return Form
 	 */
-	public function createComponentSearchForm() {
+	public function createComponentSearchForm(): Form {
 		$form = new Form();
 		$form->addText('searchTerm')->setDefaultValue($this->searchTerm);
 		$form->addSubmit('find');
