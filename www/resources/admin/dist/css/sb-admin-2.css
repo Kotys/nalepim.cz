@@ -434,6 +434,7 @@ table.dataTable thead .sorting:after {
 }
 .orders-panel button {
   margin-right: 8px;
+  margin-bottom: 8px;
 }
 .orders-panel tbody tr:hover {
   cursor: pointer;
@@ -442,7 +443,7 @@ table.dataTable thead .sorting:after {
   margin-right: 8px;
 }
 .categories-list td {
-  padding: 5px 8px !important;
+  padding: 6px 8px !important;
 }
 .categories-list td i.fa {
   margin-right: 6px;
