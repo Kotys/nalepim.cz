@@ -1,78 +1,113 @@
 {block content}
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header" n:block="title">Produkty</h1>
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" n:block="title">Produkty</h1>
+		</div>
 	</div>
-</div>
 
-{include '../_shared/flashes.latte'}
+	{include '../_shared/flashes.latte'}
 
 
-<div class="panel panel-default orders-panel">
-	<div class="panel-heading">
-		<div class="row">
-			<div class="col-lg-4 col-md-12">
-				<div class="form-group">
-					<label for="search">Vyhledávání</label>
-					<div class="input-group">
-						<input type="text" class="form-control" id="search" placeholder="Zadejté kód produktu">
-						<span class="input-group-btn">
-                			<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+	<div class="panel panel-default orders-panel">
+		<div class="panel-heading">
+			<form id="products-filter-form" n:name="searchForm">
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<div class="form-group">
+							<label for="search">Vyhledávání</label>
+							<div class="input-group">
+								<input n:name="searchTerm"
+										type="text"
+										autocomplete="off"
+										class="form-control"
+										id="search"
+										placeholder="Zadejté kód produktu">
+								<span class="input-group-btn">
+                			<button class="btn btn-default" type="submit" n:name="find"><i
+										class="fa fa-search"></i></button>
                 		</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="main-cat">Hlavní kategorie</label>
+							<select n:name="rootCatId" class="form-control" id="main-cat">
+								<option>Všechny</option>
+								<option>Kategorie 1</option>
+								<option>Kategorie 2</option>
+								<option>Kategorie 3</option>
+								<option>Kategorie 4</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="child-cat">Kategorie</label>
+							<select n:name="childCatId" class="form-control" id="child-cat">
+								<option>Všechny</option>
+								<option>Kategorie 1</option>
+								<option>Kategorie 2</option>
+								<option>Kategorie 3</option>
+								<option>Kategorie 4</option>
+							</select>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="form-group">
-					<label for="main-cat">Hlavní kategorie</label>
-					<select class="form-control" id="main-cat">
-						<option>Všechny</option>
-						<option>Kategorie 1</option>
-						<option>Kategorie 2</option>
-						<option>Kategorie 3</option>
-						<option>Kategorie 4</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="form-group">
-					<label for="child-cat">Kategorie</label>
-					<select class="form-control" disabled id="child-cat">
-						<option>Všechny</option>
-						<option>Kategorie 1</option>
-						<option>Kategorie 2</option>
-						<option>Kategorie 3</option>
-						<option>Kategorie 4</option>
-					</select>
-				</div>
+			</form>
+		</div>
+
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+					<tr>
+						<th>#</th>
+						<th>Název</th>
+						<th>Cena</th>
+						<th>Přidáno</th>
+						<th>Poslední úprava</th>
+						<th>Zakoupeno</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><a n:href="Products:detail">20170515-004</a></td>
+						<td>Samolepka AUDI A6 FTW</td>
+						<td>500 000 EUR</td>
+						<td>11.5.2017 - 13:45</td>
+						<td>11.5.2017 - 13:45</td>
+						<td>134x</td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 
-	<div class="panel-body">
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
-				<thead>
-				<tr>
-					<th>#</th>
-					<th>Název</th>
-					<th>Cena</th>
-					<th>Přidáno</th>
-					<th>Poslední úprava</th>
-					<th>Zakoupeno</th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<td><a n:href="Products:detail">20170515-004</a></td>
-					<td>Samolepka AUDI A6 FTW</td>
-					<td>500 000 EUR</td>
-					<td>11.5.2017 - 13:45</td>
-					<td>11.5.2017 - 13:45</td>
-					<td>134x</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
+{/block}
+
+{block scripts}
+	<script>
+		/**
+		 * Select changes listener
+		 */
+		$(document).ready(function () {
+			var formRef = $('#products-filter-form');
+			var mainCatSelect = $('#main-cat');
+			var childCatSelect = $('#child-cat');
+			if (formRef && mainCatSelect && childCatSelect) {
+				if (mainCatSelect[0] && childCatSelect[0]) {
+					mainCatSelect[0].addEventListener('change', function (event) {
+						childCatSelect.val(0);
+						formRef.submit();
+					});
+
+					childCatSelect[0].addEventListener('change', function (event) {
+						formRef.submit();
+					});
+				}
+			}
+		});
+	</script>
+{/block}
