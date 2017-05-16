@@ -27,16 +27,16 @@
 				<div class="form-group">
 					<label>Filtr dle stavu</label>
 					<div class="input-group">
-						<a n:href="ChangeFilterValue!, awaitingPayment" n:class='isset($awaitingPayment) && $awaitingPayment === true ? "btn btn-info" : "btn btn-default"'>
+						<a n:href="ChangeFilterValue!, awaitingPayment" n:class='isset($awaitingPayment) && $awaitingPayment === true ? "btn btn-info" : "btn btn-info btn-outline"'>
 							Čeká na zaplacení
 						</a>
-						<a n:href="ChangeFilterValue!, awaitingExpedition" n:class='isset($awaitingExpedition) && $awaitingExpedition === true ? "btn btn-info" : "btn btn-default"'>
+						<a n:href="ChangeFilterValue!, awaitingExpedition" n:class='isset($awaitingExpedition) && $awaitingExpedition === true ? "btn btn-warning" : "btn btn-warning btn-outline"'>
 							Čeká na expedici
 						</a>
-						<a n:href="ChangeFilterValue!, resolved" n:class='isset($resolved) && $resolved === true ? "btn btn-info" : "btn btn-default"'>
+						<a n:href="ChangeFilterValue!, resolved" n:class='isset($resolved) && $resolved === true ? "btn btn-success" : "btn btn-success btn-outline"'>
 							Dokončeno
 						</a>
-						<a n:href="ChangeFilterValue!, canceledTest" n:class='isset($canceledTest) && $canceledTest === true ? "btn btn-info" : "btn btn-default"'>
+						<a n:href="ChangeFilterValue!, canceledTest" n:class='isset($canceledTest) && $canceledTest === true ? "btn btn-default" : "btn btn-default btn-outline"'>
 							Stornováno
 						</a>
 					</div>
