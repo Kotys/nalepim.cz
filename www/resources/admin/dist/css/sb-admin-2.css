@@ -457,3 +457,6 @@ table.dataTable thead .sorting:after {
 .categories-list tr:hover .delete-action {
   opacity: 0.8;
 }
+button i.fa {
+  margin-right: 6px;
+}
