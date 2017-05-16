@@ -6,3 +6,43 @@
 </div>
 
 {include '../_shared/flashes.latte'}
+
+<div class="row">
+	<div class="col-xs-12">
+		<button class="btn btn-success"><i class="fa fa-plus"></i>Přidat obsah</button>
+	</div>
+</div>
+<div class="row categories-list">
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+				<tr>
+					<th>Název</th>
+					<th>Přidáno</th>
+					<th>Poslední úprava</th>
+				</tr>
+				</thead>
+				<tbody>
+				{block cat}
+					<tr>
+						<td>
+							<a n:href="Articles:detail">Article</a>
+						</td>
+						<td>10.4.2017 - 23:11</td>
+						<td>11.5.2017 - 13:45</td>
+					</tr>
+				{/block}
+
+
+				{include cat}
+				{include cat}
+				{include cat}
+				{include cat}
+				{include cat}
+				{include cat}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
