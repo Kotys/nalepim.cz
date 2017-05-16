@@ -231,18 +231,6 @@
 				<li>
 					<a n:href="Dashboard:default"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 				</li>
-				<li>
-					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li>
-							<a href="flot.html">Flot Charts</a>
-						</li>
-						<li>
-							<a href="morris.html">Morris.js Charts</a>
-						</li>
-					</ul>
-					<!-- /.nav-second-level -->
-				</li>
 
 				<li>
 					<a n:href="Orders:default" n:class="$presenter->isLinkCurrent('Orders:*') ? active"><i
@@ -267,6 +255,11 @@
 				<li>
 					<a n:href="Users:default" n:class="$presenter->isLinkCurrent('Users:*') ? active"><i
 								class="fa fa-lock fa-fw"></i> Uživatelé</a>
+				</li>
+
+				<li>
+					<a n:href="Articles:default" n:class="$presenter->isLinkCurrent('Articles:*') ? active"><i
+								class="fa fa-file-text-o fa-fw"></i> Obsah</a>
 				</li>
 
 				<li>
