@@ -3234,7 +3234,7 @@ ul {
 4. Inner Page Bennar Area styles
 ==========================================*/
 .inner-page-banner-area {
-  background: url(/resources/public/img/inner-page-banner.jpg);
+  background: url(/resources/public/img/inner-page-banner.svg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

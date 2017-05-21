@@ -4,7 +4,7 @@
     /*-------------------------------------
      jQuery MeanMenu activation code
      --------------------------------------*/
-    $('nav#dropdown').meanmenu({siteLogo: "<a href='/' class='logo-mobile-menu'><img src='/resources/public/img/logo.png?v=2' /></a>"});
+    $('nav#dropdown').meanmenu({siteLogo: "<a href='/' class='logo-mobile-menu'><img src='/resources/public/img/logo.svg'/></a>"});
 
 
     /*-------------------------------------
