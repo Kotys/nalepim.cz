@@ -1,0 +1,6 @@
+Product images resolutions:
+	- 400x400
+	- 260x260
+	- 134x134
+	- 120x120
+	- 115x115
