@@ -9197,3 +9197,8 @@ ul {
       transform: scale3D(0, 0, 1);
     }
 }
+
+.owl-carousel .owl-item img {
+  width: auto;
+  max-height: 134px;
+}
