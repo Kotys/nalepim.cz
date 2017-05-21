@@ -1,0 +1,53 @@
+{block content}
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header" n:block="title">Soubory</h1>
+	</div>
+</div>
+
+{include '../_shared/flashes.latte'}
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<form n:name="uploadFile">
+					<div class="form-group">
+						<label>Nahrát soubor</label>
+						<input type="file" n:name="file">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-success" n:name="upload" type="submit"><i class="fa fa-plus"></i>Nahrát soubor</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+						<tr>
+							<th>Název</th>
+							<th>Velikost</th>
+							<th>Nahráno</th>
+							<th>Odkaz</th>
+							<th class="text-right">Akce</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr n:foreach="$files as $file">
+							<td><a href="{$file->getFileUrl()}">{$file->getTitle()}</a></td>
+							<td>{$file->getFileSize()|bytes}</td>
+							<td>{$file->getCreated()|date:'j.n.Y H:i'}</td>
+							<td><a href="{$file->getFileUrl()}">{$file->getFileUrl()}</a></td>
+							<td class="text-right">
+								<a n:href="DeleteFile!, $file->getId()" class="btn btn-danger btn-xs">Odstranit</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

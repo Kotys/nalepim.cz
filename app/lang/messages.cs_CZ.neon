@@ -1,0 +1,6 @@
+fileManager:
+	fileUploaded: "Soubor byl nahrán"
+	fileUploadFailed: "Nahrávání souboru selhalo"
+	fileIsNotValid: "Zvolený soubor není validní"
+	fileNotFound: "Soubor neexistuje"
+	deleteFileFailed: "Soubor se nepodařilo odstranit"
