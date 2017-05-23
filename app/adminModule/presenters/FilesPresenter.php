@@ -13,6 +13,10 @@ use App\Shared\FlashMessage\FlashMessageType;
 use Kdyby\Translation\Translator;
 use Nette\Application\UI\Form;
 
+/**
+ * Class FilesPresenter
+ * @package App\AdminModule\Presenters
+ */
 class FilesPresenter extends SecuredAdminPresenter
 {
 	/**
@@ -20,23 +24,35 @@ class FilesPresenter extends SecuredAdminPresenter
 	 */
 	private $fileManager;
 
+	/**
+	 * FilesPresenter constructor.
+	 * @param Translator $translator
+	 * @param FileManager $fileManager
+	 */
 	public function __construct(Translator $translator, FileManager $fileManager)
 	{
 		parent::__construct($translator);
 		$this->fileManager = $fileManager;
 	}
 
+	/**
+	 *
+	 */
 	public function actionDefault()
 	{
 		$this->getTemplate()->files = $this->fileManager->getAllFiles();
 	}
 
+	/**
+	 * @param $fileId
+	 */
 	public function handleDeleteFile($fileId)
 	{
 		$file = $this->fileManager->getFile($fileId);
 		if ($file instanceof File) {
 			try {
 				$this->fileManager->deleteFile($file);
+				$this->flashMessage($this->translator->translate('messages.fileManager.fileRemoved'), FlashMessageType::$SUCCESS);
 			} catch (FileManagerException $e) {
 				$this->flashMessage($e->getMessage(), FlashMessageType::$DANGER);
 			}
@@ -47,6 +63,9 @@ class FilesPresenter extends SecuredAdminPresenter
 		$this->redirect('this');
 	}
 
+	/**
+	 * @return Form
+	 */
 	protected function createComponentUploadFile()
 	{
 		$form = new Form();
