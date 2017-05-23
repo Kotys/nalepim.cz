@@ -9,8 +9,8 @@ use App\AdminModule\BaseManager;
 use App\AdminModule\Model\Entities\File;
 use Nette\Http\FileUpload;
 use Nette\Utils\DateTime;
+use Nette\Utils\Finder;
 use Nette\Utils\Random;
-use Tracy\Debugger;
 
 /**
  * Class FileManager
@@ -87,7 +87,7 @@ class FileManager extends BaseManager
 		if (file_exists($file->getPath())) {
 			if (unlink($file->getPath())) {
 				try {
-					// TODO: If parent directory is empty, remote it, recursive
+					$this->cleanDirectory($file->getDirectory());
 					$this->entityManager->remove($file);
 					$this->entityManager->flush();
 				} catch (\Exception $e) {
@@ -98,13 +98,34 @@ class FileManager extends BaseManager
 			}
 		} else {
 			try {
-				// TODO: If parent directory is empty, remote it, recursive
+				$this->cleanDirectory($file->getDirectory());
 				$this->entityManager->remove($file);
 				$this->entityManager->flush();
 			} catch (\Exception $e) {
 				throw new FileManagerException($this->translator->translate('messages.fileManager.deleteFileFailed'));
 			}
 			throw new FileManagerException($this->translator->translate('messages.fileManager.fileNotFound'));
+		}
+	}
+
+	/**
+	 * Try to remove empty directories
+	 * @param string $destination
+	 */
+	private function cleanDirectory(string $destination)
+	{
+		$pathParts = array_filter(explode('/', str_replace(DATA_UPLOAD_DIR, "", $destination)));
+
+		for ($i = count($pathParts); $i > 0; $i--) {
+			$path = DATA_UPLOAD_DIR . implode('/', array_slice($pathParts, 0, $i));
+
+			if (file_exists($path)) {
+				if (Finder::findFiles('*')->from($path)->count() === 0) {
+					@rmdir($path);
+				} else {
+					return;
+				}
+			}
 		}
 	}
 }
