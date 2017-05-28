@@ -21,6 +21,7 @@ abstract class BaseAdminPresenter extends Presenter
 	 */
 	public function __construct(Translator $translator)
 	{
+		parent::__construct();
 		$this->translator = $translator;
 	}
 }
