@@ -1,2 +1,3 @@
 services:
 	- App\AdminModule\Services\FileManager
+	- App\AdminModule\Services\CategoryManager

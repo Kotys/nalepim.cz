@@ -5,3 +5,9 @@ fileManager:
 	fileIsNotValid: "Zvolený soubor není validní"
 	fileNotFound: "Soubor neexistuje"
 	deleteFileFailed: "Soubor se nepodařilo odstranit"
+
+categoryManager:
+	createCategoryFailed: "Nelze vytvořit novou kategorii"
+	categoryAlreadyExists: "Kategorie s tímto názvem již existuje"
+	parentCategoryNotFound: "Nadřazená kategorie neexistuje"
+	newCategoryCreated: "Kategorie vytvořena"

@@ -1,0 +1,34 @@
+{block content}
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header" n:block="title">Nová Kategorie</h1>
+	</div>
+</div>
+
+{include '../_shared/flashes.latte'}
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
+		<div class="panel panel-default">
+			<form n:name="newCategoryForm">
+				<div class="panel-heading">
+					<div class="form-group">
+						<label for="category-title">Název kategorie</label>
+						<input n:name="title" class="form-control" id="category-title" autocomplete="off">
+					</div>
+
+					<div class="form-group">
+						<label for="parent-category">Nadřazená kategorie</label>
+						<select n:name="parentCategory" class="form-control" id="parent-category"></select>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 text-right">
+							<button n:name="create" class="btn btn-success">Přidat novou kategorii</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

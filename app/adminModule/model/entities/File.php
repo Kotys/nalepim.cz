@@ -7,7 +7,6 @@ namespace App\AdminModule\Model\Entities;
 
 use Kdyby\Doctrine\Entities\Attributes\Identifier;
 use Doctrine\ORM\Mapping as ORM;
-use Tracy\Debugger;
 
 /**
  * @ORM\Entity
