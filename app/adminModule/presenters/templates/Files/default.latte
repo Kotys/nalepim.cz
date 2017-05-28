@@ -17,14 +17,16 @@
 						<input type="file" n:name="file">
 					</div>
 					<div class="form-group">
-						<button class="btn btn-success" n:name="upload" type="submit"><i class="fa fa-plus"></i>Nahrát soubor</button>
+						<button class="btn btn-success" n:name="upload" type="submit">
+							<i class="fa fa-plus"></i>Nahrát soubor
+						</button>
 					</div>
 				</form>
 			</div>
 
 			<div class="panel-body">
 				<div class="table-responsive">
-					<table class="table table-striped table-hover">
+					<table n:class="count($files) > 0 ? 'table table-striped table-hover' : 'table table-striped' ">
 						<thead>
 						<tr>
 							<th>Název</th>
@@ -34,7 +36,7 @@
 							<th class="text-right">Akce</th>
 						</tr>
 						</thead>
-						<tbody>
+						<tbody n:if="count($files) > 0">
 						<tr n:foreach="$files as $file">
 							<td><a href="{$file->getFileUrl()}">{$file->getTitle()}</a></td>
 							<td>{$file->getFileSize()|bytes}</td>
@@ -43,6 +45,11 @@
 							<td class="text-right">
 								<a n:href="DeleteFile!, $file->getId()" class="btn btn-danger btn-xs">Odstranit</a>
 							</td>
+						</tr>
+						</tbody>
+						<tbody n:if="count($files) === 0">
+						<tr>
+							<td colspan="5">Žádné soubory</td>
 						</tr>
 						</tbody>
 					</table>
