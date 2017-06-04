@@ -65,15 +65,39 @@ class CategoriesPresenter extends SecuredAdminPresenter
 			if ($this->categoryDetail instanceof Category) {
 				$this->getTemplate()->category = $this->categoryDetail;
 			} else {
-				$this->flashMessage('TODO NOT FOUND MESSAGE', FlashMessageType::$DANGER);
+				$this->flashMessage($this->translator->translate('messages.categoryManager.categoryNotFound'), FlashMessageType::$DANGER);
 				$this->redirect('Categories:default');
 			}
 		} else {
-			$this->flashMessage('TODO NOT FOUND MESSAGE', FlashMessageType::$DANGER);
+			$this->flashMessage($this->translator->translate('messages.categoryManager.categoryNotFound'), FlashMessageType::$DANGER);
 			$this->redirect('Categories:default');
 		}
 	}
 
+	/**
+	 * @param $id
+	 */
+	public function handleRemoveCategory($id)
+	{
+		try {
+			$category = $this->categoryManager->getRepository()->find($id);
+			if ($category instanceof Category) {
+				$this->categoryManager->removeCategory($category);
+				$this->flashMessage($this->translator->translate('messages.categoryManager.categoryRemoved'), FlashMessageType::$SUCCESS);
+				$this->redirect('Categories:default');
+			} else {
+				$this->flashMessage($this->translator->translate('messages.categoryManager.categoryNotFound'), FlashMessageType::$DANGER);
+				$this->redirect('Categories:default');
+			}
+		} catch (CategoryManagerException $e) {
+			$this->flashMessage($e->getMessage(), FlashMessageType::$DANGER);
+			$this->redirect('Categories:default');
+		}
+	}
+
+	/**
+	 * @param string|null $parentCategory
+	 */
 	public function actionNew(string $parentCategory = null)
 	{
 		if (!empty($parentCategory)) {
@@ -140,13 +164,15 @@ class CategoriesPresenter extends SecuredAdminPresenter
 			->setDefaultValue($this->categoryDetail->getTitle())
 			->setRequired();
 
-		$rootCategoriesAvailable = [null => "- ŽÁDNÁ -"];
-		foreach ($this->categoryManager->getRootCategories() as $rootCategory) {
-			$rootCategoriesAvailable[$rootCategory->getId()] = $rootCategory->getTitle();
-		}
+		if(!$this->categoryDetail->isRootCategory()) {
+			$rootCategoriesAvailable = [null => "- ŽÁDNÁ -"];
+			foreach ($this->categoryManager->getRootCategories() as $rootCategory) {
+				$rootCategoriesAvailable[$rootCategory->getId()] = $rootCategory->getTitle();
+			}
 
-		$form->addSelect('parentCategory', null, $rootCategoriesAvailable)
-			->setDefaultValue(($this->categoryDetail->getParentCategory() instanceof Category) ? $this->categoryDetail->getParentCategory()->getId() : null);
+			$form->addSelect('parentCategory', null, $rootCategoriesAvailable)
+				->setDefaultValue(($this->categoryDetail->getParentCategory() instanceof Category) ? $this->categoryDetail->getParentCategory()->getId() : null);
+		}
 
 		$form->addSubmit('save');
 

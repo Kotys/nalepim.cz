@@ -18,13 +18,23 @@
 							<input n:name="title" class="form-control" id="category-title" autocomplete="off">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group" n:if="!$category->isRootCategory()">
 							<label for="parent-category">Nadřazená kategorie</label>
 							<select n:name="parentCategory" class="form-control" id="parent-category"></select>
 						</div>
 
 						<div class="row">
-							<div class="col-xs-12 text-right">
+							<div class="col-xs-6" n:if="$category->isRootCategory()">
+								<a n:href="RemoveCategory!, $category->getId()" class="btn btn-danger">
+									<i class="fa fa-trash"></i> Odstranit kategorii včetně obsažených
+								</a>
+							</div>
+							<div class="col-xs-6" n:if="!$category->isRootCategory()">
+								<a n:href="RemoveCategory!, $category->getId()" class="btn btn-danger">
+									<i class="fa fa-trash"></i> Odstranit kategorii
+								</a>
+							</div>
+							<div class="col-xs-6 text-right">
 								<button n:name="save" class="btn btn-success">Uložit změny kategorie</button>
 							</div>
 						</div>
@@ -32,32 +42,26 @@
 				</form>
 			</div>
 			<div class="panel-body">
-				<div class="row categories-list">
+				<div class="row categories-list" n:if="$category->isRootCategory()">
 					<div class="col-xs-12">
 						<div class="table-responsive">
 							<table n:class="count($category->getChildrenCategories()) > 0 ? 'table table-hover' : 'table'">
 								<thead>
 								<tr>
 									<th>Obsahuje kategorie</th>
-									<th class="text-right">Akce</th>
 								</tr>
 								</thead>
 								<tbody n:inner-foreach="$category->getChildrenCategories() as $childCategory">
 								<tr>
 									<td>
 										<i class="fa fa-long-arrow-right"></i>
-										<a n:href="Categories:detail">{$childCategory->getTitle()}</a>
-									</td>
-									<td class="text-right">
-										<button type="button" class="btn btn-danger btn-xs  delete-action">
-											Odstranit kategorii
-										</button>
+										<a n:href="Categories:detail, $childCategory->getId()">{$childCategory->getTitle()}</a>
 									</td>
 								</tr>
 								</tbody>
 								<tbody n:if="count($category->getChildrenCategories()) === 0">
 								<tr>
-									<td colspan="2">Tato kategorie neobsahuje žádné další kategorie</td>
+									<td>Tato kategorie neobsahuje žádné další kategorie</td>
 								</tr>
 								</tbody>
 							</table>
@@ -66,17 +70,9 @@
 							<a n:href="Categories:new, 'parentCategory' => $category->getId()"
 									type="button"
 									class="btn btn-success btn-xs add-sub-action">
-								<i class="fa fa-plus"></i>Přidat další kategorii
+								<i class="fa fa-plus"></i>Přidat novou kategorii
 							</a>
 						</div>
-						{*<div class="row">*}
-						{*<div class="col-xs-6 col-xs-offset-3">*}
-						{*<div class="well">*}
-						{*<h4>Normal Well</h4>*}
-						{*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>*}
-						{*</div>*}
-						{*</div>*}
-						{*</div>*}
 					</div>
 				</div>
 

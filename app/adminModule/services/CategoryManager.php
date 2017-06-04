@@ -10,6 +10,8 @@ use App\AdminModule\Model\Entities\Category;
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Translation\Translator;
 use Tracy\Debugger;
+use Tracy\ILogger;
+use Tracy\Logger;
 
 /**
  * Class CategoryManager
@@ -65,6 +67,7 @@ class CategoryManager extends BaseManager
 			$this->entityManager->flush();
 			return $category;
 		} catch (\Exception $e) {
+			Debugger::log($e, ILogger::EXCEPTION);
 			throw new CategoryManagerException($this->translator->translate('messages.categoryManager.createCategoryFailed'));
 		}
 	}
@@ -90,7 +93,23 @@ class CategoryManager extends BaseManager
 			$this->entityManager->flush();
 			return $updatedCategory;
 		} catch (\Exception $e) {
+			Debugger::log($e, ILogger::EXCEPTION);
 			throw new CategoryManagerException($this->translator->translate('messages.categoryManager.updateCategoryFailed'));
+		}
+	}
+
+	/**
+	 * @param Category $category
+	 * @throws CategoryManagerException
+	 */
+	public function removeCategory(Category $category)
+	{
+		try {
+			$this->entityManager->remove($category);
+			$this->entityManager->flush();
+		} catch (\Exception $e) {
+			Debugger::log($e, ILogger::EXCEPTION);
+			throw new CategoryManagerException($this->translator->translate('messages.categoryManager.removeCategoryFailed'));
 		}
 	}
 
