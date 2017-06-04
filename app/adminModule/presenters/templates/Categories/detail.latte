@@ -35,33 +35,39 @@
 				<div class="row categories-list">
 					<div class="col-xs-12">
 						<div class="table-responsive">
-							<table class="table table-hover">
+							<table n:class="count($category->getChildrenCategories()) > 0 ? 'table table-hover' : 'table'">
 								<thead>
 								<tr>
-									<th>Název kategorie</th>
+									<th>Obsahuje kategorie</th>
 									<th class="text-right">Akce</th>
 								</tr>
 								</thead>
-								<tbody>
-								{block row}
-									<tr>
-										<td><i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail">Subkategorie
-												1</a></td>
-										<td class="text-right">
-											<button type="button" class="btn btn-danger btn-xs  delete-action">Odstranit
-												kategorii
-											</button>
-										</td>
-									</tr>
-								{/block}
-								{include row}
-								{include row}
-								{include row}
-								{include row}
-								{include row}
-								{include row}
+								<tbody n:inner-foreach="$category->getChildrenCategories() as $childCategory">
+								<tr>
+									<td>
+										<i class="fa fa-long-arrow-right"></i>
+										<a n:href="Categories:detail">{$childCategory->getTitle()}</a>
+									</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-danger btn-xs  delete-action">
+											Odstranit kategorii
+										</button>
+									</td>
+								</tr>
+								</tbody>
+								<tbody n:if="count($category->getChildrenCategories()) === 0">
+								<tr>
+									<td colspan="2">Tato kategorie neobsahuje žádné další kategorie</td>
+								</tr>
 								</tbody>
 							</table>
+						</div>
+						<div class="col-xs-12">
+							<a n:href="Categories:new, 'parentCategory' => $category->getId()"
+									type="button"
+									class="btn btn-success btn-xs add-sub-action">
+								<i class="fa fa-plus"></i>Přidat další kategorii
+							</a>
 						</div>
 						{*<div class="row">*}
 						{*<div class="col-xs-6 col-xs-offset-3">*}

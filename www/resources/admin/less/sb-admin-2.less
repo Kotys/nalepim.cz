@@ -578,11 +578,9 @@ table.dataTable thead .sorting:after {
 }
 
 .categories-list {
+	margin-bottom: 30px !important;
 	td {
 		padding: 6px 8px !important;
-		i.fa {
-			margin-right: 6px;
-		}
 
 		.delete-action {
 			opacity: 0.35;
@@ -590,7 +588,18 @@ table.dataTable thead .sorting:after {
 				opacity: 1 !important;
 			}
 		}
+		.add-sub-action {
+			opacity: 0.35;
+			&:hover {
+				opacity: 1 !important;
+			}
+		}
 	}
+
+	i.fa {
+		margin-right: 6px;
+	}
+
 	tr:hover .delete-action {
 		opacity: 0.8;
 	}

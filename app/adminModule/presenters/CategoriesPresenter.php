@@ -32,6 +32,11 @@ class CategoriesPresenter extends SecuredAdminPresenter
 	private $categoryDetail;
 
 	/**
+	 * @var Category
+	 */
+	private $defaultCategory;
+
+	/**
 	 * CategoriesPresenter constructor.
 	 * @param Translator $translator
 	 * @param CategoryManager $categoryManager
@@ -69,6 +74,16 @@ class CategoriesPresenter extends SecuredAdminPresenter
 		}
 	}
 
+	public function actionNew(string $parentCategory = null)
+	{
+		if (!empty($parentCategory)) {
+			$this->defaultCategory = $this->categoryManager->getRepository()->find($parentCategory);
+			if (!$this->defaultCategory instanceof Category) {
+//				$this->flashMessage();
+			}
+		}
+	}
+
 	/**
 	 * @return Form
 	 */
@@ -83,7 +98,8 @@ class CategoriesPresenter extends SecuredAdminPresenter
 			$rootCategoriesAvailable[$rootCategory->getId()] = $rootCategory->getTitle();
 		}
 
-		$form->addSelect('parentCategory', null, $rootCategoriesAvailable)->setDefaultValue(null);
+		$form->addSelect('parentCategory', null, $rootCategoriesAvailable)
+			->setDefaultValue(($this->defaultCategory instanceof Category) ? $this->defaultCategory->getId() : null);
 
 		$form->addSubmit('create');
 

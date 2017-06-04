@@ -456,17 +456,26 @@ table.dataTable thead .sorting:after {
 .orders-panel a.btn.btn-default:not(.btn-outline):hover {
   background-color: #565656 !important;
 }
+.categories-list {
+  margin-bottom: 30px !important;
+}
 .categories-list td {
   padding: 6px 8px !important;
-}
-.categories-list td i.fa {
-  margin-right: 6px;
 }
 .categories-list td .delete-action {
   opacity: 0.35;
 }
 .categories-list td .delete-action:hover {
   opacity: 1 !important;
+}
+.categories-list td .add-sub-action {
+  opacity: 0.35;
+}
+.categories-list td .add-sub-action:hover {
+  opacity: 1 !important;
+}
+.categories-list i.fa {
+  margin-right: 6px;
 }
 .categories-list tr:hover .delete-action {
   opacity: 0.8;
