@@ -22,55 +22,19 @@
 					<th class="text-right">Počet položek</th>
 				</tr>
 				</thead>
-				<tbody>
-				{block cat}
-					<tr class="breadcrumb">
-						<td>
-							<a n:href="Categories:detail">Kategorie 1</a>
-						</td>
-						<td class="text-right">50</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail">Subkategorie 1</a></td>
-						<td class="text-right">10</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail">Subkategorie 2</a></td>
-						<td class="text-right">10</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail">Subkategorie 3</a></td>
-						<td class="text-right">10</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail">Subkategorie 4</a></td>
-						<td class="text-right">10</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail">Subkategorie 5</a></td>
-						<td class="text-right">10</td>
-					</tr>
-				{/block}
-
-
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
-				{include cat}
+				<tbody n:inner-foreach="$categories as $category">
+				<tr class="breadcrumb">
+					<td>
+						<a n:href="Categories:detail, $category->getId()">{$category->getTitle()}</a>
+					</td>
+					<td class="text-right">50</td>
+				</tr>
+				<tr n:foreach="$category->getChildrenCategories() as $childCategory">
+					<td>
+						<i class="fa fa-long-arrow-right"></i><a n:href="Categories:detail, $childCategory->getId()">{$childCategory->getTitle()}</a>
+					</td>
+					<td class="text-right">10</td>
+				</tr>
 				</tbody>
 			</table>
 		</div>

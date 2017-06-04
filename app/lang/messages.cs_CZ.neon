@@ -8,6 +8,8 @@ fileManager:
 
 categoryManager:
 	createCategoryFailed: "Nelze vytvořit novou kategorii"
+	updateCategoryFailed: "Nelze uložit změny kategorie"
 	categoryAlreadyExists: "Kategorie s tímto názvem již existuje"
 	parentCategoryNotFound: "Nadřazená kategorie neexistuje"
 	newCategoryCreated: "Kategorie vytvořena"
+	categoryUpdated: "Kategorie upravena"

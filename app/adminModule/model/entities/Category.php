@@ -86,6 +86,10 @@ class Category
 		$this->parentCategory = $parentCategory;
 	}
 
+	public function isRootCategory() {
+		return $this->parentCategory === null;
+	}
+
 	/**
 	 * @return string
 	 */

@@ -9,6 +9,7 @@ use App\AdminModule\BaseManager;
 use App\AdminModule\Model\Entities\Category;
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Translation\Translator;
+use Tracy\Debugger;
 
 /**
  * Class CategoryManager
@@ -27,7 +28,7 @@ class CategoryManager extends BaseManager
 	}
 
 	/**
-	 * @return array
+	 * @return Category[]
 	 */
 	public function getRootCategories()
 	{
@@ -45,7 +46,8 @@ class CategoryManager extends BaseManager
 	public function createCategory($title, Category $parent = null)
 	{
 		$existingCategory = $this->getRepository()->findOneBy([
-			'title' => $title
+			'title' => $title,
+			'parentCategory' => ($parent instanceof Category) ? $parent->getId() : null
 		]);
 
 		if ($existingCategory instanceof Category) {
@@ -64,6 +66,31 @@ class CategoryManager extends BaseManager
 			return $category;
 		} catch (\Exception $e) {
 			throw new CategoryManagerException($this->translator->translate('messages.categoryManager.createCategoryFailed'));
+		}
+	}
+
+	/**
+	 * @param Category $updatedCategory
+	 * @return Category
+	 * @throws CategoryManagerException
+	 */
+	public function updateCategory(Category $updatedCategory)
+	{
+		$existingCategory = $this->getRepository()->findOneBy([
+			'title' => $updatedCategory->getTitle(),
+			'parentCategory' => ($updatedCategory->getParentCategory() instanceof Category) ? $updatedCategory->getParentCategory()->getId() : null
+		]);
+
+		if ($existingCategory instanceof Category && $existingCategory->getId() !== $updatedCategory->getId()) {
+			throw new CategoryManagerException($this->translator->translate('messages.categoryManager.categoryAlreadyExists'));
+		}
+
+		try {
+			$this->entityManager->persist($updatedCategory);
+			$this->entityManager->flush();
+			return $updatedCategory;
+		} catch (\Exception $e) {
+			throw new CategoryManagerException($this->translator->translate('messages.categoryManager.updateCategoryFailed'));
 		}
 	}
 
